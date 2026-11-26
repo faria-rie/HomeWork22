@@ -22,13 +22,17 @@ body {
   background-color: #ffffff;
   width: 100%;
   min-height: 520px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 40px 20px;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.game-box.active {
+  display: flex;
 }
 
 .title {
@@ -73,7 +77,6 @@ body {
 }
 
 .error-msg {
-  display: none;
   background-color: #c8322b;
   color: #ffffff;
   width: 100%;
@@ -81,18 +84,8 @@ body {
   text-align: center;
   padding: 10px 20px;
   border-radius: 4px;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
-}
-
-/* ***** */
-
-#playerOneScreen {
-  display: none;
-}
-
-#playerOneScreen[style*="display: block"] {
-  display: flex !important;
 }
 
 [hidden] {

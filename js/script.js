@@ -1,38 +1,52 @@
-let nameInput = document.getElementById("nameInput")
-let startGameBtn = document.getElementById("startGameBtn")
-let errorMsg = document.getElementById("errorMsg")
-let startScreen = document.getElementById("startScreen")
-let playerOneScreen = document.getElementById("playerOneScreen");
-let playerOneTitle = document.getElementById("playerOneTitle");
+const nameInput = document.getElementById("nameInput");
+const startGameBtn = document.getElementById("startGameBtn");
+const errorMsg = document.getElementById("errorMsg");
 
-// 3rd Box elements (Player 2 Name)
-let playerTwoScreen = document.getElementById("playerTwoScreen");
-let playerTwoNameInput = document.getElementById("playerTwoNameInput");
-let playerTwoStartBtn = document.getElementById("playerTwoStartBtn");
-let errorPlayerTwoName = document.getElementById("errorPlayerTwoName");
-// --------------------------------
+const numberInput = document.getElementById("numberInput");
+const letsPlayBtn = document.getElementById("letsPlayBtn");
+const numberErrorMsg = document.getElementById("numberErrorMsg");
+
+const playerTwoNameInput = document.getElementById("playerTwoNameInput");
+const playerTwoStartBtn = document.getElementById("playerTwostartbtn");
+const errorPlayerTwoName = document.getElementById("errorPlayerTwoName");
+
+const playerOneTitle = document.getElementById("playerOneTitle");
+
+const screens = document.querySelectorAll(".game-box");
+
+function showScreen(screenId) {
+  screens.forEach((screen) => {
+    screen.classList.remove("active");
+  });
+
+  document.getElementById(screenId).classList.add("active");
+}
+
+showScreen("startScreen");
+
 startGameBtn.addEventListener("click", () => {
-    if (nameInput.value == "") {
-        errorMsg.removeAttribute("hidden");
-    } else {
-        startScreen.style.display = "hidden";
-        playerOneScreen.style.display = "block";
-        playerOneTitle.innerText = nameInput.value;
-    }
+  if (nameInput.value.trim() === "") {
+    errorMsg.hidden = false;
+  } else {
+    errorMsg.hidden = true;
+    playerOneTitle.innerText = nameInput.value.trim();
+    showScreen("playerOneScreen");
+  }
 });
 
+letsPlayBtn.addEventListener("click", () => {
+  if (numberInput.value.trim() === "") {
+    numberErrorMsg.hidden = false;
+  } else {
+    numberErrorMsg.hidden = true;
+    showScreen("playerTwoScreen");
+  }
+});
 
-// 3rd Box Event (Player 2 Name submit)
 playerTwoStartBtn.addEventListener("click", () => {
-    if (playerTwoNameInput.value == "") {
-        errorPlayerTwoName.removeAttribute("hidden");
-    } else {
-        playerTwoStartBtn.style.display = "none";
-        errorPlayerTwoName.removeAttribute("hidden", "");
-        playerTwoScreen.setAttribute("hidden", "");
-    }
+  if (playerTwoNameInput.value.trim() === "") {
+    errorPlayerTwoName.hidden = false;
+  } else {
+    errorPlayerTwoName.hidden = true;
+  }
 });
-
-
-
-
